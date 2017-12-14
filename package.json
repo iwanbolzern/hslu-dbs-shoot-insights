@@ -12,6 +12,16 @@
     "express": "~4.15.5",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "vue": "^2.5.10"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.2.3",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "vue-loader": "^13.5.0",
+    "vue-property-decorator": "^6.0.0",
+    "vue-template-compiler": "^2.5.10",
+    "webpack": "^3.10.0"
   }
 }
