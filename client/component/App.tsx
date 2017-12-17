@@ -1,32 +1,43 @@
 import * as React from "react";
-import { IAthlete } from "../model";
-import { AthleteRanking } from "./AthleteRanking";
 
-interface IAppState {
-  athlete: IAthlete | null;
+import { observer } from "mobx-react";
+
+import { IDiscipline } from "../model";
+import { IStore } from "../store";
+
+import { AthleteRanking } from "./AthleteRanking";
+import { ChangeEvent } from "react";
+
+interface IAppProps {
+  store: IStore;
 }
 
-export class App extends React.Component<any, IAppState> {
-  constructor(props: any) {
-    super(props);
-    this.state = { athlete: null };
+@observer
+export class App extends React.Component<IAppProps> {
+  componentDidMount() {
+    this.props.store.fetchDisciplinesAsync();
   }
 
-  async componentDidMount() {
-    const response = await fetch("/athlet/id");
-    const json = await response.json();
-    this.setState({ athlete: json });
+  handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    this.props.store.selectDiscipline(e.target.value);
   }
 
   render() {
-    if (this.state.athlete === null)
-      return (<div>Loading...</div>)
+    const disciplines = this.props.store.disciplines.map(d => <option key={d} value={d}>{d}</option>)
+
+    if (disciplines.length == 0)
+      return (<span> Loading ... </span>);
 
     return (
       <div>
-        <AthleteRanking athlete={this.state.athlete} />
+        <span>Select a discipline:</span>
+        <select value={this.props.store.selectedDiscipline} onChange={this.handleChange}>
+          <option disabled hidden value="" />
+          {disciplines}
+        </select>
       </div>
     )
+
   }
 }
 
