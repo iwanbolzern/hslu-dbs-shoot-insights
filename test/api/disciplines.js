@@ -6,6 +6,14 @@ const expect = chai.expect;
 chai.use(require('chai-http'));
 chai.use(require('chai-json-schema'));
 
+const disciplinesSchema = {
+  type: 'array',
+  items: {
+    type: "string"
+  },
+  'uniqueItems': true
+};
+
 describe('Test disciplines route', () => {
   it('GET /disciplines validate JSON-Schema', done => {
     request(app)
@@ -13,14 +21,16 @@ describe('Test disciplines route', () => {
       .expect(200)
       .end((err, res) => {
         expect(res).to.be.json;
-        expect(res.body).to.be.jsonSchema({
-          type: 'array',
-          items: {
-            type: "string"
-          },
-          'uniqueItems': true
-        });
+        expect(res.body).to.be.jsonSchema(disciplinesSchema);
         done();
       })
   });
+  it('GET /disciplines return the list', done => {
+    request(app)
+      .get('/disciplines')
+      .end((err, res) => {
+          console.log(res.body);
+          done();
+      })
+  })
 });

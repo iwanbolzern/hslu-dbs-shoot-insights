@@ -1,3 +1,4 @@
 {
-
+  "_connection_string": "use local mongodb in dev mode; start - docker run -p 27017:27017 --name some-mongo -d mongo",
+  "connection_string": "mongodb://127.0.0.1:27017"
 }
