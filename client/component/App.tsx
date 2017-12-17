@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import { IDiscipline } from "../model";
 import { IStore } from "../store";
 
-import { AthleteRanking } from "./AthleteRanking";
+import { Ranking } from "./AthleteRanking";
 import { ChangeEvent } from "react";
 
 interface IAppProps {
@@ -29,13 +29,23 @@ export class App extends React.Component<IAppProps> {
       return (<span> Loading ... </span>);
 
     return (
-      <div>
-        <span>Select a discipline:</span>
-        <select value={this.props.store.selectedDiscipline} onChange={this.handleChange}>
-          <option disabled hidden value="" />
-          {disciplines}
-        </select>
+      <div className="container">
+        <section className="section">
+          <div className="container">
+            <h1 className="title">Shoot Insights</h1>
+            <h2 className="subtitle">
+              Select a discipline:
+              <select value={this.props.store.selectedDiscipline} onChange={this.handleChange}>
+                <option disabled hidden value="" />
+                {disciplines}
+              </select>
+            </h2>
+          </div>
+        </section>
+
+        <Ranking ranking={this.props.store.exampleRanking} />
       </div>
+
     )
 
   }

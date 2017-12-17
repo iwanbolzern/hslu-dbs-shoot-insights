@@ -1,15 +1,20 @@
 import * as React from "react";
-import { IAthlete } from "../model";
+import { IRanking } from "../model";
 
-interface IAthleteRankingProps {
-  athlete: IAthlete;
+interface IRankingProps {
+  ranking: IRanking;
 }
 
-export class AthleteRanking extends React.Component<IAthleteRankingProps> {
+export class Ranking extends React.Component<IRankingProps> {
   render() {
     return (
-      <div>
-        <span>{this.props.athlete.Name}</span>
+      <div className="columns">
+        <span className="column">{this.props.ranking.ID}</span>
+        <span className="column">{this.props.ranking.Name}</span>
+        <span className="column">{this.props.ranking.Nationality}</span>
+        <span className="column">{this.props.ranking.AvgScore}</span>
+        <span className="column">{this.props.ranking.AvgSeries}</span>
+        <span className="column">{this.props.ranking.Trend}</span>
       </div>
     )
   }

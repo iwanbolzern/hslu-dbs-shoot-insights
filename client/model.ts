@@ -13,3 +13,12 @@ export interface IAthlete {
     Nationality: string,
     Disciplines: IDiscipline[]
 }
+
+export interface IRanking {
+    ID: number,
+    Name: string,
+    Nationality: string,
+    AvgScore: number,
+    AvgSeries: number[],
+    Trend: string
+}
