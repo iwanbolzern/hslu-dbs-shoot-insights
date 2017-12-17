@@ -1,4 +1,6 @@
-
+var config = require('../utils/config/defaults.json');
+var express = require('express');
+var router = express.Router();
 
 router.get('/', function(req, res, next) {
     dis = [
@@ -7,3 +9,5 @@ router.get('/', function(req, res, next) {
     ];
     res.send(dis);
 });
+
+module.exports = router;

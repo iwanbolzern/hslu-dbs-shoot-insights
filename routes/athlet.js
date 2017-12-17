@@ -1,3 +1,5 @@
+var express = require('express');
+var router = express.Router();
 
 router.get('/:id', function(req, res, next) {
 
@@ -21,3 +23,5 @@ router.get('/:id', function(req, res, next) {
 
     res.send(athlet);
 });
+
+module.exports = router;

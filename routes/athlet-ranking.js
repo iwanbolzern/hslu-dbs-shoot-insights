@@ -1,4 +1,5 @@
-
+var express = require('express');
+var router = express.Router();
 
 router.get('/:discipline', function(req, res, next) {
 
@@ -18,3 +19,5 @@ router.get('/:discipline', function(req, res, next) {
 
     res.send(result);
 });
+
+module.exports = router;
