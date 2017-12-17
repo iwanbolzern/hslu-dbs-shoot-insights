@@ -1,6 +1,6 @@
 module.exports = {
     entry: {
-        main: "./client/index.ts"
+        main: "./client/index.tsx"
     },
     output: {
         publicPath: "/js/",
@@ -12,20 +12,13 @@ module.exports = {
     devtool: "source-map",
 
     resolve: {
-        extensions: [".ts", ".vue"]
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
 
     module: {
         rules: [
-            { test: /\.vue$/, loader: "vue-loader", },
-            { test: /\.ts$/, loader: 'ts-loader', options: { appendTsSuffixTo: [/\.vue$/] } },
+            { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ]
-    },
-
-    resolve: {
-        alias: {
-            vue: 'vue/dist/vue.js'
-        }
     }
 };
