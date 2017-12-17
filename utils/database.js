@@ -19,7 +19,5 @@ var getAthlets = function(disciplinId) {
 };
 
 module.exports = {
-    initialize: initialize,
-    sensorModel: function() { return mongoose.model('Sensor') },
-    sensorValueModel: function () { return mongoose.model('SensorValue') }
+    initialize: initialize
 };
