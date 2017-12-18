@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:latest
+
+  shoot-insights:
+    build: .
+    depends_on:
+      - mongo
+    ports:
+      - 3000:3000
