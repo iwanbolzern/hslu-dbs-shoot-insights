@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var database = require('./utils/database');
+var database = require('../utils/database');
 
 function createAthletView(athlet, dis) {
     let viewAthlet = {
