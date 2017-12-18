@@ -4,6 +4,8 @@ import { IDiscipline, IRanking } from "./model";
 export interface IStore {
     disciplines: string[];
     selectedDiscipline: string;
+    athleteRankings: IRanking[];
+
     fetchDisciplinesAsync(): Promise<void>;
     selectDiscipline(discipline: string): void;
 
@@ -13,6 +15,9 @@ export interface IStore {
 class Store implements IStore {
     @observable
     public disciplines: string[] = [];
+
+    @observable
+    public athleteRankings: IRanking[] = [];
 
     @observable
     public selectedDiscipline: string = "";
@@ -36,8 +41,16 @@ class Store implements IStore {
         }
     }
 
-    public selectDiscipline(discipline: string): void {
+    public async selectDiscipline(discipline: string): Promise<void> {
         this.selectedDiscipline = discipline;
+
+        try {
+            const result = await fetch("/athlet-ranking/" + discipline);
+            this.athleteRankings = await result.json();
+        } catch (e) {
+            this.athleteRankings = [];
+            throw e;
+        }
     }
 }
 
