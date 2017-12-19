@@ -1,0 +1,4 @@
+{
+  "_connection_string": "export NODE_ENV=hslu",
+  "connection_string": "mongodb://dbs-2017-tabolzer.enterpriselab.ch:8090"
+}

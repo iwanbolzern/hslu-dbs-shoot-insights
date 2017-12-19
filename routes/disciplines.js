@@ -6,29 +6,29 @@ var MongoClient = require('mongodb').MongoClient;
 var config = require('../utils/config/config.js');
 
 async function getDisciplines() {
-    let db = await MongoClient.connect(config.connection_string);
-    try {
 
-    } finally {
-        db.close();
-    }
-
-    return [
-       '10 Meter Pistol',
-       '10 Meter Air Rifle'
-    ];
+    return dis;
 }
 
 router.get('/', async function(req, res, next) {
-    getDisciplines()
-        .then(dis => {
-            console.info(dis);
-            res.send(dis);
-        })
-        .catch((err) => {
-            console.error(err);
-            res.send(err);
-        });
+  let db = await MongoClient.connect(config.connection_string);
+  let dis = [];
+  let status = 200;
+
+  try {
+    let dbBase = db.db('shoot-insights');
+    dis = await dbBase.collection('athlet').aggregate([
+      { $unwind: "$Disziplines"},
+      { $group: { _id: "$Disziplines.Name" } }
+    ]).map(v => v._id).toArray();
+  } catch(ex) {
+    status = 500;
+    console.log(ex);
+  } finally {
+      db.close();
+  }
+
+  res.status(status).send(dis);
 });
 
 module.exports = router;
