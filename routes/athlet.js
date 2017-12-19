@@ -1,27 +1,25 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+const config = require('../utils/config/config.js');
+const router = express.Router();
 
-router.get('/:id', function(req, res, next) {
-
+router.get('/:id', async function(req, res, next) {
     var id = req.params.id;
+    let dis = [];
+    let status = 200;
 
-    var athlet = {
-        Name: "Iwan Bolzern",
-        Nationality: "CH",
-        Disciplines: [
-            {
-                Name: "10 Meteres Air Rifle",
-                Results: [
-                    {
-                        Competition: "China",
-                        Series: [80, 20, 30]
-                    }
-                ]
-            }
-        ]
-    };
+    let db = await MongoClient.connect(config.connection_string);
+    try {
+      let dbBase = db.db('shoot-insights');
+      var athlet = await dbBase.collection("athlet").findOne(ObjectID(id));
+    } catch(ex) {
+      status = 404;
+    } finally {
+      db.close();
+    }
 
-    res.send(athlet);
+    res.status(status).send(athlet);
 });
 
 module.exports = router;

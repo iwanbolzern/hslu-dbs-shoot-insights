@@ -11,10 +11,10 @@ async function getDisciplines() {
 }
 
 router.get('/', async function(req, res, next) {
-  let db = await MongoClient.connect(config.connection_string);
   let dis = [];
   let status = 200;
 
+  let db = await MongoClient.connect(config.connection_string);
   try {
     let dbBase = db.db('shoot-insights');
     dis = await dbBase.collection('athlet').aggregate([
