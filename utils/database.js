@@ -1,12 +1,14 @@
+var config = require('./config/config');
 var MongoClient = require('mongodb').MongoClient;
 var database = null;
 
-var initialize = async function(config) {
+var initialize = async function() {
     // Connection URL
     var url = config.connection_string;
 
     // Use connect method to connect to the Server
-    database = await MongoClient.connect(url);
+    mongoClient = await MongoClient.connect(url);
+    database = mongoClient.db('shoot-insights');
 };
 
 var getAthlets = async function(disciplinId) {

@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var athlet = require('./routes/athlet');
 var athlet_ranking = require('./routes/athlet-ranking');
-var disciplines = require('./routes/disciplines')
+var disciplines = require('./routes/disciplines');
 
 var app = express();
 
