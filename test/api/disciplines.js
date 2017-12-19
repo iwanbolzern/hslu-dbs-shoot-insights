@@ -29,7 +29,7 @@ describe('Test disciplines route', () => {
     request(app)
       .get('/disciplines')
       .end((err, res) => {
-          console.log(res.body);
+          expect(res.body).to.be.jsonSchema(disciplinesSchema);
           done();
       })
   })
