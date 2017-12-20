@@ -8,8 +8,14 @@ function createAthletView(athlet, dis) {
     let viewAthlet = {
         ID: athlet._id,
         Name: athlet.FamilyName,
-        Nationality: athlet.Organisation
+        Nationality: athlet.Organisation,
+        AvgScore: 0,
+        AvgSeries: [],
+        Trend: 'equal'
     };
+    if(dis.Qualifications.length <= 0)
+        return viewAthlet;
+
     var average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
 
     let avg = average(dis.Qualifications.map(x => x.Score));
