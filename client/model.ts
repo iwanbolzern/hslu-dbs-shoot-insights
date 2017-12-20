@@ -1,21 +1,28 @@
 export interface IResult {
     Competition: string,
-    Series: number[]
+    Date: string,
+    Score: number,
+    Series: number[],
+    Shoots: number[],
 }
 
 export interface IDiscipline {
     Name: string,
-    Results: IResult[]
+    Qualifications: IResult[]
+    Finals: IResult[]
 }
 
 export interface IAthlete {
-    Name: string,
-    Nationality: string,
+    _id: string,
+    Bib: string,
+    FamilyName: string,
+    GivenName: string,
+    Organisation: string,
     Disciplines: IDiscipline[]
 }
 
 export interface IRanking {
-    ID: number,
+    ID: string,
     Name: string,
     Nationality: string,
     AvgScore: number,

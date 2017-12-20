@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 import { IStore } from "../store";
 
 import { Ranking } from "./AthleteRanking";
+import { Athlete } from "./Athlete";
 import { DisciplineSelector } from "./DisciplineSelector";
 import { DisciplineRankings } from "./DisciplineRankings";
 
@@ -15,6 +16,14 @@ interface IAppProps {
 @observer
 export class App extends React.Component<IAppProps> {
   render() {
+    let content = <div />
+
+    if (this.props.store.selectedAthlete !== null) {
+      content = <Athlete athlete={this.props.store.selectedAthlete} />
+    } else {
+      content = <DisciplineRankings store={this.props.store} />
+    }
+
     return (
       <div className="container">
         <section className="section">
@@ -26,7 +35,7 @@ export class App extends React.Component<IAppProps> {
           </div>
         </section>
 
-        <DisciplineRankings store={this.props.store} />
+        {content}
       </div>
     )
   }

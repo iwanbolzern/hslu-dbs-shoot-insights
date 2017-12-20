@@ -3,6 +3,7 @@ import { IRanking } from "../model";
 
 interface IRankingProps {
   ranking: IRanking;
+  selectAthlete: (id: string) => void;
 }
 
 export class Ranking extends React.Component<IRankingProps> {
@@ -14,10 +15,11 @@ export class Ranking extends React.Component<IRankingProps> {
     series = series.substr(1); // Trim leading comma
 
     const avg = this.props.ranking.AvgScore.toFixed(2);
+    const callback = () => this.props.selectAthlete(this.props.ranking.ID);
 
     return (
       <div className="columns">
-        <span className="column">{this.props.ranking.ID}</span>
+        <button onClick={callback}>View</button>
         <span className="column">{this.props.ranking.Name}</span>
         <span className="column">{this.props.ranking.Nationality}</span>
         <span className="column">{avg}</span>

@@ -14,7 +14,7 @@ export class DisciplineSelector extends React.Component<IAppProps> {
   }
 
   handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    this.props.store.selectDiscipline(e.target.value);
+    this.props.store.selectDisciplineAsync(e.target.value);
   }
 
   render() {
