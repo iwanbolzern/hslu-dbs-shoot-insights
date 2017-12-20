@@ -7,10 +7,11 @@ interface IRankingProps {
 
 export class Ranking extends React.Component<IRankingProps> {
   render() {
-    const series = this.props.ranking.AvgSeries
+    let series = this.props.ranking.AvgSeries
       .map(n => n.toFixed(2))
       .map(s => s.toString())
-      .reduce((prev, curr) => `${prev},${curr}`)
+      .reduce((prev, curr) => `${prev},${curr}`, "")
+    series = series.substr(1); // Trim leading comma
 
     const avg = this.props.ranking.AvgScore.toFixed(2);
 
