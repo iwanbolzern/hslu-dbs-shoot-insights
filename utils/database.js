@@ -13,7 +13,7 @@ var initialize = async function() {
 
 var getAthlets = async function(disciplinId) {
     let collection = database.collection('athlet');
-    let athlets = await collection.find({'Disziplines':
+    let athlets = await collection.find({'Disciplines':
             { $elemMatch : {'Name': disciplinId}}
     }).toArray();
 

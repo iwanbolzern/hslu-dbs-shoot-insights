@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var regression = require('regression');
 var database = require('../utils/database');
 database.initialize();
 
@@ -11,14 +12,14 @@ function createAthletView(athlet, dis) {
     };
     var average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
 
-    let avg = average(dis.Qualifications);
+    let avg = average(dis.Qualifications.map(x => x.Score));
     let avgSeries = [];
     let trend = null;
 
     let minLength = Math.min.apply(Math, dis.Qualifications.map(x => x.Series.length));
     for(let i = 0; i < minLength; i++) {
-        let avg = average(dis.Qualifications.map(x => x.Series[0]));
-        avgSeries.append(avg);
+        let avgSerie = average(dis.Qualifications.map(x => x.Series[i]));
+        avgSeries.push(avgSerie);
     }
 
     let result = regression.linear(dis.Qualifications.map(x => x.Score));
@@ -38,15 +39,15 @@ function createAthletView(athlet, dis) {
 
 router.get('/:discipline', async function(req, res, next) {
     // get params
-    var dis = req.params.discipline;
+    var disName = req.params.discipline;
 
     //get data
-    athlets = await database.getAthlets(dis);
+    athlets = await database.getAthlets(disName);
     result = [];
     athlets.forEach(athlet => {
-        let dis = athlet.Disciplines.filter(dis => dis.Name == dis)[0];
+        let dis = athlet.Disciplines.filter(dis => dis.Name == disName)[0];
         let athletView = createAthletView(athlet, dis);
-        result.append(athletView);
+        result.push(athletView);
     });
 
 

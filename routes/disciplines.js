@@ -18,8 +18,8 @@ router.get('/', async function(req, res, next) {
   try {
     let dbBase = db.db('shoot-insights');
     dis = await dbBase.collection('athlet').aggregate([
-      { $unwind: "$Disziplines"},
-      { $group: { _id: "$Disziplines.Name" } }
+      { $unwind: "$Disciplines"},
+      { $group: { _id: "$Disciplines.Name" } }
     ]).map(v => v._id).toArray();
   } catch(ex) {
     status = 500;
