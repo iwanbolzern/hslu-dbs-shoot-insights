@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "yarn webpack",
+    "prestart": "yarn install",
     "start": "node ./bin/www",
     "test": "pwd && mocha \"test/**/*.js\"",
     "watch": "mocha  \"test/**/*.js\" --watch"
