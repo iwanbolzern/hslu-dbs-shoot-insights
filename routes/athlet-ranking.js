@@ -28,7 +28,8 @@ function createAthletView(athlet, dis) {
         avgSeries.push(avgSerie);
     }
 
-    let result = regression.linear(dis.Qualifications.map(x => x.Score));
+    const scores = dis.Qualifications.map((x, i) => [i, x.Score]);
+    let result = regression.linear(scores);
     let gradient = result.equation[0];
     if(gradient < -0.3)
         trend = 'down';
