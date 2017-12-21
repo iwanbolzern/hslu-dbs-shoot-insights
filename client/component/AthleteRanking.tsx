@@ -49,7 +49,8 @@ export class Ranking extends React.Component<IRankingProps> {
         <td><span className="column">{this.props.ranking.Name}</span></td>
         <td><span className="column"><Flag code={ code } height="20" width="20" /></span>
         </td>
-        <td><span className="column">{graph(this.props.ranking.AvgSeries)}</span></td>
+        <td><span className="column">{graph(this.props.ranking.AvgSeries)}</span>
+            <span style={{fontWeight: "bold"}}>{this.props.ranking.AvgSeries.map(x => Math.round(x * 10) / 10 + ' ')}</span></td>
         <td><span className="column">{avg}</span></td>
         <td><span className="column">{trendView}</span></td>
       </tr>
