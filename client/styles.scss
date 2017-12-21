@@ -1,6 +1,9 @@
 @import "~bulma";
 @import "./node_modules/react-vis/dist/style";
 
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "./node_modules/font-awesome/scss/font-awesome.scss";
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;

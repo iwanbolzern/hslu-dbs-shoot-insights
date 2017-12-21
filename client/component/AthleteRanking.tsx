@@ -1,5 +1,6 @@
 import * as React from "react";
-var FontAwesome = require('react-fontawesome');
+import * as FontAwesome from 'react-fontawesome';
+import {Flag} from "react-flags";
 import { IRanking } from "../model";
 import { graph } from "./XYPlotter";
 
@@ -44,9 +45,15 @@ export class Ranking extends React.Component<IRankingProps> {
       <tr>
         <td><button onClick={callback}>View</button></td>
         <td><span className="column">{this.props.ranking.Name}</span></td>
-        <td><span className="column">{this.props.ranking.Nationality}</span></td>
-          <td><span className="column">{series}</span></td>
-          <td><span className="column">{avg}</span></td>
+        <td><span className="column"> <Flag
+            name={this.props.ranking.Nationality}
+            format="png"
+            pngSize={64}
+            shiny={true}
+            alt="test"/></span>
+        </td>
+        <td><span className="column">{series}</span></td>
+        <td><span className="column">{avg}</span></td>
         <td><span className="column">{trendView}</span></td>
       </tr>
     )

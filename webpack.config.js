@@ -4,8 +4,8 @@ module.exports = {
         main: "./client/index.tsx"
     },
     output: {
-        publicPath: "/js/",
-        path: __dirname + "/public/js/",
+        publicPath: "/",
+        path: __dirname + "/public/",
         filename: "bundle.js"
     },
 
@@ -35,7 +35,21 @@ module.exports = {
             },
 
             { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            {
+                test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/',    // where the fonts will go
+                        publicPath: '../'       // override the default path
+                    }
+                }]
+            },
+            // Images.
+            {test: /\.(png|ico|icns)$/, loader: "url?limit=8192"},
         ]
     }
+
 };

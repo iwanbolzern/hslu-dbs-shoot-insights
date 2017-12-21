@@ -7,6 +7,10 @@
     "jsx": "react",
 
     "module": "commonjs",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/client/types"
+    ]
   }
 }
