@@ -1,5 +1,10 @@
 import * as React from "react";
-import {XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries} from 'react-vis';
+const reactvis = require('react-vis');
+const XYPlot = reactvis.XYPlot,
+    XAxis = reactvis.XAxis,
+    YAxis = reactvis.YAxis,
+    HorizontalGridLines = reactvis.HorizontalGridLines,
+    LineSeries = reactvis.LineSeries;
 
 export function graph(values: number[], width?: number, height?: number) {
   height = height ? height : 25;
