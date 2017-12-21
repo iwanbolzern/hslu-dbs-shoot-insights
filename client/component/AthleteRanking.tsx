@@ -23,22 +23,22 @@ export class Ranking extends React.Component<IRankingProps> {
     var trendView = null;
     if(this.props.ranking.Trend == 'up') {
         trendView = <FontAwesome
-            className='fa-rotate-90'
-            name='arrow-right'
+            className='fa-rotate-45'
+            name='arrow-up'
             size='2x'
-            style={{color: 'rgba(0, 0, 0, 1)'}} />
+            style={{color: '#1E8449'}} />
     } else if(this.props.ranking.Trend == 'equal') {
         trendView = <FontAwesome
-            className='fa-rotate-180'
+            className='fa-rotate-0'
             name='arrow-right'
             size='2x'
             style={{color: 'rgba(0, 0, 0, 1)'}} />
     } else {
         trendView = <FontAwesome
-            className='fa-rotate-100'
+            className='fa-rotate-45'
             name='arrow-right'
             size='2x'
-            style={{color: 'rgba(0, 0, 0, 1)'}} />
+            style={{color: '#C0392B'}} />
     }
 
     return (
