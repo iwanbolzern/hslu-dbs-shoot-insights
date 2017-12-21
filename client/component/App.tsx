@@ -25,11 +25,13 @@ export class App extends React.Component<IAppProps> {
     }
 
     return (
-      <div className="container">
+      <div className="container" style={{margin: "0px auto"}}>
         <section className="section">
           <div className="container">
-            <h1 className="title">Shoot Insights</h1>
-            <h2 className="subtitle">
+            <div>
+              <img style={{marginLeft: "2em", marginTop: "1em", width: "600px"}} src="imgs/banner.png" />
+            </div>
+            <h2 style={{verticalAlign: "center"}} className="subtitle">
               <DisciplineSelector store={this.props.store} />
             </h2>
           </div>
