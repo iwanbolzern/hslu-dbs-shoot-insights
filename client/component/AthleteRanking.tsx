@@ -1,4 +1,5 @@
 import * as React from "react";
+var FontAwesome = require('react-fontawesome');
 import { IRanking } from "../model";
 import { graph } from "./XYPlotter";
 
@@ -18,15 +19,36 @@ export class Ranking extends React.Component<IRankingProps> {
     const avg = this.props.ranking.AvgScore.toFixed(2);
     const callback = () => this.props.selectAthlete(this.props.ranking.ID);
 
+    var trendView = null;
+    if(this.props.ranking.Trend == 'up') {
+        trendView = <FontAwesome
+            className='fa-rotate-90'
+            name='arrow-right'
+            size='2x'
+            style={{color: 'rgba(0, 0, 0, 1)'}} />
+    } else if(this.props.ranking.Trend == 'equal') {
+        trendView = <FontAwesome
+            className='fa-rotate-180'
+            name='arrow-right'
+            size='2x'
+            style={{color: 'rgba(0, 0, 0, 1)'}} />
+    } else {
+        trendView = <FontAwesome
+            className='fa-rotate-100'
+            name='arrow-right'
+            size='2x'
+            style={{color: 'rgba(0, 0, 0, 1)'}} />
+    }
+
     return (
-      <div className="columns">
-        <button onClick={callback}>View</button>
-        <span className="column">{this.props.ranking.Name}</span>
-        <span className="column">{this.props.ranking.Nationality}</span>
-        <span className="column">{avg}</span>
-        <span className="column">{graph(this.props.ranking.AvgSeries, 300)}</span>
-        <span className="column">{this.props.ranking.Trend}</span>
-      </div>
+      <tr>
+        <td><button onClick={callback}>View</button></td>
+        <td><span className="column">{this.props.ranking.Name}</span></td>
+        <td><span className="column">{this.props.ranking.Nationality}</span></td>
+          <td><span className="column">{series}</span></td>
+          <td><span className="column">{avg}</span></td>
+        <td><span className="column">{trendView}</span></td>
+      </tr>
     )
   }
 }

@@ -22,7 +22,21 @@ export class DisciplineRankings extends React.Component<IDisciplineRankingsProps
     const rankings = this.props.store.athleteRankings.map(r => <Ranking key={r.ID} ranking={r} selectAthlete={this.selectAthlete} />);
     return (
       <div>
-        {rankings}
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+                <th>Nationality</th>
+              <th>Avg. Series</th>
+              <th>Avg. Score</th>
+                <th>Trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rankings}
+          </tbody>
+        </table>
       </div>
     );
   }

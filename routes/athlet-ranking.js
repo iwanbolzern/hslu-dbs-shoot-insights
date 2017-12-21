@@ -7,7 +7,7 @@ database.initialize();
 function createAthletView(athlet, dis) {
     let viewAthlet = {
         ID: athlet._id,
-        Name: athlet.FamilyName,
+        Name: athlet.FamilyName + ' ' + athlet.GivenName,
         Nationality: athlet.Organisation,
         AvgScore: 0,
         AvgSeries: [],
