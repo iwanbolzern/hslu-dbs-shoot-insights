@@ -10,13 +10,13 @@ interface IRankingProps {
 export class Athlete extends React.Component<IRankingProps> {
     render() {
         const asdf = this.props.athlete.Disciplines.map(r => <div>
-            <h1>-----{r.Name}-----</h1>
-            <h2>Qualifikation</h2>
+            <h1 className="title">{r.Name}</h1>
+            <h2 className="subtitle">Qualifikation</h2>
             {r.Qualifications.map(d => <div>
                 {d.Competition}
                 {graph(d.Series)}
             </div>)}
-            <h2>Finals</h2>
+            <h2 className="subtitle">Finals</h2>
             {r.Finals.map(f =>
                 <div>
                     {f.Competition}
