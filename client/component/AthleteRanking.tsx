@@ -2,7 +2,7 @@ import * as React from "react";
 import * as FontAwesome from 'react-fontawesome';
 import { IRanking } from "../model";
 import { graph } from "./XYPlotter";
-//const Flag = require("react-flags").Flag;
+var Flag = require('react-world-flags').default;
 
 interface IRankingProps {
   ranking: IRanking;
@@ -41,11 +41,13 @@ export class Ranking extends React.Component<IRankingProps> {
             style={{color: 'rgba(0, 0, 0, 1)'}} />
     }
 
+    var code = this.props.ranking.Nationality.toString();
+
     return (
       <tr>
         <td><button onClick={callback}>View</button></td>
         <td><span className="column">{this.props.ranking.Name}</span></td>
-        <td><span className="column"></span>
+        <td><span className="column"><Flag code={ code } height="20" width="20" /></span>
         </td>
         <td><span className="column">{graph(this.props.ranking.AvgSeries)}</span></td>
         <td><span className="column">{avg}</span></td>

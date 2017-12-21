@@ -24,9 +24,9 @@
     "nconf": "^0.9.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-flags": "^0.1.12",
     "react-fontawesome": "^1.6.1",
     "react-vis": "^1.8.1",
+    "react-world-flags": "^0.0.3",
     "regression": "^2.0.1",
     "serve-favicon": "~2.4.5"
   },
