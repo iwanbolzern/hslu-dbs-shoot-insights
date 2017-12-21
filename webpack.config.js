@@ -1,3 +1,4 @@
+var args = process.argv.slice(2);
 module.exports = {
     entry: {
         main: "./client/index.tsx"
@@ -13,6 +14,11 @@ module.exports = {
 
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"]
+    },
+
+    watch: args.indexOf("watch") > -1,
+    watchOptions: {
+        ignored: /node_modules/
     },
 
     module: {

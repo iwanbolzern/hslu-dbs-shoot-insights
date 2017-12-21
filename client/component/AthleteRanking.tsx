@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IRanking } from "../model";
+import { graph } from "./XYPlotter";
 
 interface IRankingProps {
   ranking: IRanking;
@@ -23,7 +24,7 @@ export class Ranking extends React.Component<IRankingProps> {
         <span className="column">{this.props.ranking.Name}</span>
         <span className="column">{this.props.ranking.Nationality}</span>
         <span className="column">{avg}</span>
-        <span className="column">{series}</span>
+        <span className="column">{graph(this.props.ranking.AvgSeries, 300)}</span>
         <span className="column">{this.props.ranking.Trend}</span>
       </div>
     )

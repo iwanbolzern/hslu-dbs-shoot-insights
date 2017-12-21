@@ -1,6 +1,7 @@
 import * as React from "react";
 import { IStore } from "../store";
 import { IAthlete } from "../model";
+import { graph } from "./XYPlotter";
 
 interface IRankingProps {
   athlete: IAthlete;
@@ -8,25 +9,18 @@ interface IRankingProps {
 
 export class Athlete extends React.Component<IRankingProps> {
     render() {
-
         const asdf = this.props.athlete.Disciplines.map(r => <div>
             <h1>-----{r.Name}-----</h1>
             <h2>Qualifikation</h2>
             {r.Qualifications.map(d => <div>
                 {d.Competition}
-                {d.Series.map(s => <div>
-                    {s}
-                    </div>
-                )}
+                {graph(d.Series)}
             </div>)}
             <h2>Finals</h2>
             {r.Finals.map(f =>
                 <div>
                     {f.Competition}
-                    {f.Series.map(s => <div>
-                        {s}
-                    </div>
-                    )}
+                    {graph(f.Series)}
                 </div>)}
         </div>);
 
@@ -40,4 +34,3 @@ export class Athlete extends React.Component<IRankingProps> {
       )
   }
 }
-
