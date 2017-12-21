@@ -31,6 +31,7 @@ class Store implements IStore {
         try {
             const result = await fetch("/disciplines");
             this.disciplines = await result.json();
+            this.selectDisciplineAsync(this.disciplines[1]);
         } catch (e) {
             throw e;
         }
