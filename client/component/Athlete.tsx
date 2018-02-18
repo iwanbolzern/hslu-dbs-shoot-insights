@@ -14,13 +14,13 @@ export class Athlete extends React.Component<IRankingProps> {
             <h2 className="subtitle">Qualifikation</h2>
             {r.Qualifications.map(d => <div>
                 {d.Competition}
-                {graph(d.Series)}
+                {graph([d.Series])}
             </div>)}
             <h2 className="subtitle">Finals</h2>
             {r.Finals.map(f =>
                 <div>
                     {f.Competition}
-                    {graph(f.Series)}
+                    {graph([f.Series])}
                 </div>)}
         </div>);
 

@@ -2219,6 +2219,7 @@ jade@~1.11.0:
     jstransformer "0.0.2"
     mkdirp "~0.5.0"
     transformers "2.1.0"
+    uglify-js "^2.4.19"
     void-elements "~2.0.1"
     with "~4.0.0"
 
@@ -3514,10 +3515,6 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-flags@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/react-flags/-/react-flags-0.1.12.tgz#1ef52048ea57bad3cd40d8e3a193f4cbc963165c"
-
 react-fontawesome@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-fontawesome/-/react-fontawesome-1.6.1.tgz#eddce17e7dc731aa09fd4a186688a61793a16c5c"
@@ -4372,7 +4369,7 @@ ua-parser-js@^0.7.9:
   version "0.7.17"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.17.tgz#e9ec5f9498b9ec910e7ae3ac626a805c4d09ecac"
 
-uglify-js@^2.8.29:
+uglify-js@^2.4.19, uglify-js@^2.8.29:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
   dependencies:
@@ -4602,7 +4599,7 @@ wordwrap@~0.0.2:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 world-countries@^1.8.1:
-  version v1.8.1
+  version "1.8.1"
   resolved "https://registry.yarnpkg.com/world-countries/-/world-countries-1.8.1.tgz#14ba7d735d422d63de70deb6e35ec5e49341b209"
 
 wrap-ansi@^2.0.0:

@@ -56,6 +56,7 @@ router.get('/:discipline', async function(req, res, next) {
         let athletView = createAthletView(athlet, dis);
         result.push(athletView);
     });
+    result.sort(function(a, b) { return b.AvgScore - a.AvgScore });
 
 
     // result = [
