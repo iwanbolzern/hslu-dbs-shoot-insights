@@ -40,7 +40,7 @@
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.6",
     "mocha": "^4.0.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.13.1",
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.1",
