@@ -23,7 +23,7 @@
     "morgan": "~1.9.0",
     "nconf": "^0.9.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.2.1",
     "react-fontawesome": "^1.6.1",
     "react-vis": "^1.8.1",
     "react-world-flags": "^0.0.3",
